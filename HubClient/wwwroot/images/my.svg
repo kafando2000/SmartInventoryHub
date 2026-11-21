@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="160px" height="60px">
+          <defs>
+            <!-- Define the linear gradient -->
+            <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#3214ca" />
+              <stop offset="50%" stop-color="#241096" />
+              <stop offset="100%" stop-color="#064042" />
+            </linearGradient>
+          </defs>
+          <style>
+            text {
+              text-shadow: 0 0 3px #e9eff0;
+              z-index: 5;
+              font-style: italic;
+            }
+          </style>
+          <!-- Apply the gradient to the text fill -->
+          <text x="80" y="30"  fill-opacity="1"
+                dominant-baseline="middle" 
+                text-anchor="middle" 
+                fill="url(#textGradient)" 
+                font-family="sans-serif" 
+                font-size="25" 
+                font-weight="bold">
+                WSTTA
+          </text>
+          <ellipse cx="82" cy="27" rx="60" ry="18" fill="none" stroke="#1e1b4b" stroke-width="3" />
+</svg>

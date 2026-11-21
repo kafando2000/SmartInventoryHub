@@ -1,0 +1,33 @@
+﻿@inherits LayoutComponentBase
+<div class="grid min-md:grid-cols-12 min-md:grid-rows-12 gap-1 mt-0 p-0 top-0  bg-gray-100">
+
+    <aside class="min-md:col-start-1 min-lg:col-start-1
+     min-lg:col-span-2 min-md:col-span-3 min-md:row-span-12 max-md:hidden
+     h-screen sticky top-0 mt-0 p-0
+    ">
+        <NavMenu />
+    </aside>
+    <header class="min-md:col-start-4 min-lg:col-start-3 min-md:col-span-9 
+    min-lg:col-span-10
+    min-md:row-span-1
+       bg-neutral-primary-soft
+       border-b-2 border-b-gray-400
+       sticky top-0 m-0 p-0
+    ">
+        <Header/>
+    </header>
+    <main class="m-4 grid
+    min-md:col-start-4 min-lg:col-start-3 min-lg:col-span-10
+    min-md:col-span-9 row-span-10 bg-gray-100 text-center 
+     overflow-x-scroll
+    ">
+            @Body
+    </main>
+    <Footer />
+</div>
+
+@* <div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div> *@

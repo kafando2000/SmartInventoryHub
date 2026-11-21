@@ -1,0 +1,220 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using System.Linq.Expressions
+@using System.Runtime.CompilerServices
+@using tailwind_4_blazor_starter.Pages
+@using tailwind_4_blazor_starter.Services
+@using SharedModels.Models
+@using System.Text.Json
+@inherits FlowbitePage
+@inject HttpClient httpClient
+
+<h1 class=" box-border m-2 bg-blue-500 text-white text-2xl w-95/100 h-10 font-bold ring-2 ring-blue-500
+stroke-2 shadow-2xl rounded-2xl">Welcome THOMAS!</h1>
+@if(isLoading)
+{
+    <div role="status">
+    <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+    </svg>
+    <span class="sr-only">Loading...</span>
+   </div>
+}
+else{
+    @if( products is not null)
+    {
+    <section id="category1" class="box-border w-95/100 h-auto m-2">
+        <div class="overflow-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+            <table class="w-full text-sm text-left rtl:text-right text-body">
+                <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 font-medium">
+                            Product name
+                        </th>
+                        <th scope="col" class="px-6 py-3 font-medium">
+                            sku
+                        </th>
+                        <th scope="col" class="px-6 py-3 font-medium">
+                            units
+                        </th>
+                        <th scope="col" class="px-6 py-3 font-medium">
+                            Price
+                        </th>
+                        <th scope="col" class="px-6 py-3 font-medium">
+                            Action
+                        </th>
+                        <th scope="col" class="px-6 py-3 font-medium">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var P in products){
+                        <tr class="bg-neutral-primary-soft">
+                            <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                                @P.Name
+                            </th>
+                            <td class="px-6 py-4">
+                                @P.Sku
+                            </td>
+                            <td class="px-6 py-4">
+                                @P.Quantity
+                            </td>
+                            <td class="px-6 py-4">
+                                $@P.Price
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="#" class="font-medium text-fg-brand hover:underline">Edit</a>
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="#" class="font-medium text-fg-danger hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+    }
+    else
+    {
+        <div class="error">products are not available</div>
+    }
+
+
+
+    <!-- Modal toggle -->
+    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" 
+    class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4
+     focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 
+     focus:outline-none " type="button" @onclick="() => HandleModal()">
+    Add new product
+    </button>
+
+    <!-- Main modal -->
+
+    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="@(showModal ? "flex" : "hidden") overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between border-b border-default pb-4 md:pb-5">
+                    <h3 class="text-lg font-medium text-heading">
+                        Sign in to our platform
+                    </h3>
+                    <button @onclick="() => HandleModal()" type="button" class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center" data-modal-hide="authentication-modal">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <EditForm OnValidSubmit="AddProduct" FormName="productFrom" Model="@productModel" class="pt-4 md:pt-6">
+                    <DataAnnotationsValidator />
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2.5 text-sm font-medium text-heading">Product name</label>
+                        <InputText @bind-Value="productModel.Name" id="name" class="bg-neutral-secondary-medium border border-default-medium
+                        text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+                        placeholder:text-body" placeholder="example : gear" required />
+                        <ValidationMessage For="@(() => productModel.Name)" class="text-sm text-red-600 dark:text-red-500 mt-1" />
+                    </div>
+                    <div class="m-2">
+                    <label> Select a category:</label>
+                    <InputSelect @bind-Value="productModel.CategoryID">
+                        <option value="-1">-- Select a role --</option>
+                        <option value="1">Mecanique</option>
+                        <option value="2">Electronique</option>
+                        <option value="3">Alimentaire</option>
+                        <option value="4">Pharmaceutique</option>
+                    </InputSelect>
+                    <ValidationMessage For="@(() => productModel.CategoryID)"  class="text-sm text-red-600 dark:text-red-500 mt-1"/>
+                    </div>
+                    <div class="mb-4">
+                        <label for="description" class="block mb-2.5 text-sm font-medium text-heading">Product description</label>
+                        <InputText @bind-Value="productModel.Description" id="description" class="bg-neutral-secondary-medium border border-default-medium
+                        text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+                        placeholder:text-body" placeholder="product description here" required />
+                        <ValidationMessage For="@(() => productModel.Description)" class="text-sm text-red-600 dark:text-red-500 mt-1"/>
+                    </div>
+                    <div class="mb-4">
+                        <label for="price" class="block mb-2.5 text-sm font-medium text-heading">Product price in $</label>
+                        <InputNumber @bind-Value="productModel.Price" id="description" class="bg-neutral-secondary-medium border border-default-medium
+                        text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+                        placeholder:text-body" placeholder="10.9" required />
+                        <ValidationMessage For="@(() => productModel.Price)" class="text-sm text-red-600 dark:text-red-500 mt-1" />
+                    </div>
+                    <div class="mb-4">
+                        <label for="price" class="block mb-2.5 text-sm font-medium text-heading">Product units</label>
+                        <InputNumber @bind-Value="productModel.Quantity" id="description" class="bg-neutral-secondary-medium border border-default-medium
+                        text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+                        placeholder:text-body" placeholder="20" required />
+                        <ValidationMessage For="@(() => productModel.Quantity)" class="text-sm text-red-600 dark:text-red-500 mt-1" />
+                    </div>
+                    <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full mb-3">Add</button>
+                    <button @onclick="() => HandleModal()" class="text-gray-950 bg-gray-100 box-border border border-transparent hover:bg-gray-400 focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full mb-3">cancel</button>
+            
+                </EditForm>
+            </div>
+        </div>
+    </div> 
+
+    
+}
+
+@code {
+    public List<ProductResponseDto>? products;
+     private bool showModal = false;
+    public  ProductRequestDto productModel = new ProductRequestDto
+                    {
+                        Name = string.Empty, CategoryID = 1, Description = string.Empty,Price =0, Quantity=0
+                    };
+    private JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+                PropertyNameCaseInsensitive = true
+            };
+    public bool isLoading;
+    protected override void OnParametersSet()
+    {   
+        base.OnParametersSet();
+    }
+    protected override  async Task OnInitializedAsync()
+    {
+        isLoading = true;
+        try
+        {
+
+            products = await httpClient.GetFromJsonAsync<List<ProductResponseDto>>("smartinventoryhubapi/products", options);
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine($"{e.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+
+        await base.OnInitializedAsync();
+    }
+    public async Task AddProduct()
+    {
+        try
+        {   
+            var respone = await httpClient.PostAsJsonAsync<ProductRequestDto>
+                ("smartinventoryhubapi/products", productModel, options);
+            StateHasChanged();
+        }   
+        catch(Exception e)
+        {
+            Console.WriteLine($"{e.Message}");
+        }
+    }
+    public async Task HandleModal()
+    {
+       showModal = !showModal;
+    }
+
+
+}
+

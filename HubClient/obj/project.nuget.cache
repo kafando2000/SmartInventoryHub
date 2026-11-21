@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2017tZoyLDE=",
+  "success": true,
+  "projectFilePath": "/home/kafando/fullstack/SmartInventoryHub/HubClient/HubClient.csproj",
+  "expectedPackageFiles": [
+    "/home/kafando/.nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.12/microsoft.aspnetcore.app.internal.assets.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
