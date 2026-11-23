@@ -11,7 +11,7 @@ SmartInventoryHub is a simple full-stack inventory management application for or
 
 ## Tech Stack
 
-- Frontend: Blazor
+- Frontend: Blazor && Tailwindcss
 - Backend: ASP.NET Core
 - Database: SQL Server
 
@@ -37,6 +37,7 @@ SmartInventoryHub is a simple full-stack inventory management application for or
    ```bash
    dotnet restore
    dotnet workload restore
+   npm install
    ```
 
 3. Configure SQL Server and the application environment variables.
