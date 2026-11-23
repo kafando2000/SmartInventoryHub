@@ -52,4 +52,4 @@ SmartInventoryHub is a simple full-stack inventory management application for or
 ## Usage
 Use the web interface to manage your inventory by adding, editing, viewing, and deleting products.
 
-[Client layout](/client_layout.png)
+![Client layout](./client_layout.png)
