@@ -42,7 +42,7 @@ SmartInventoryHub is a simple full-stack inventory management application for or
 
 3. Configure SQL Server and the application environment variables.
 
-    it will be better to use docker container.
+    It is better to use a Docker container.
 
 4. Start the server and client:
 
