@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hubserver")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba20455b8ddfddfab859483ab8e7091a5b66d66a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hubserver")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hubserver")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

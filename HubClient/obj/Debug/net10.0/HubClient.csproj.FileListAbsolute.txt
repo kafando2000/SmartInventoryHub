@@ -49,4 +49,8 @@
 /home/kafando/fullstack/SmartInventoryHub/HubClient/bin/Debug/net10.0/SharedModels.pdb
 /home/kafando/fullstack/SmartInventoryHub/HubClient/obj/Debug/net10.0/HubClient.csproj.AssemblyReference.cache
 /home/kafando/fullstack/SmartInventoryHub/HubClient/obj/Debug/net10.0/HubClient.csproj.Up2Date
-/home/kafando/fullstack/SmartInventoryHub/HubClient/obj/Debug/net10.0/compressed/bb28mqxqen-{0}-cr3h09aicu-cr3h09aicu.gz
+/home/kafando/fullstack/SmartInventoryHub/HubClient/obj/Debug/net10.0/HubClient.sourcelink.json
+/home/kafando/fullstack/SmartInventoryHub/HubClient/bin/Debug/net10.0/Microsoft.AspNetCore.Http.Connections.Client.dll
+/home/kafando/fullstack/SmartInventoryHub/HubClient/bin/Debug/net10.0/Microsoft.AspNetCore.SignalR.Client.dll
+/home/kafando/fullstack/SmartInventoryHub/HubClient/bin/Debug/net10.0/Microsoft.AspNetCore.SignalR.Client.Core.dll
+/home/kafando/fullstack/SmartInventoryHub/HubClient/obj/Debug/net10.0/compressed/bb28mqxqen-{0}-2dy0kt3hqe-2dy0kt3hqe.gz

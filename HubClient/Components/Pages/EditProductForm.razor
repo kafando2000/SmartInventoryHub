@@ -1,0 +1,56 @@
+@using SharedModels.Models
+<div class="mb-4">
+<label for="name" class="block mb-2.5 text-sm font-medium text-heading">Product name</label>
+<InputText @bind-Value="ProductEditModel.Name" id="name" class="bg-neutral-secondary-medium border border-default-medium
+text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+placeholder:text-body" placeholder="example : gear"  />
+<ValidationMessage For="@(() => ProductEditModel.Name)" class="text-sm text-red-600 dark:text-red-500 mt-1" />
+</div>
+<div class="m-2">
+<label> Select a category:</label>
+<InputSelect @bind-Value="ProductEditModel.CategoryID">
+<option value="-1">-- Select a category --</option>
+@foreach(var category in Categories)
+    {
+        <option value="@category.CategoryID">@category.Name</option>
+    }
+</InputSelect>
+<ValidationMessage For="@(() => ProductEditModel.CategoryID)"  class="text-sm text-red-600 dark:text-red-500 mt-1"/>
+</div>
+<div class="mb-4">
+<label for="description" class="block mb-2.5 text-sm font-medium text-heading">Product description</label>
+<InputText @bind-Value="ProductEditModel.Description" id="description" class="bg-neutral-secondary-medium border border-default-medium
+text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+placeholder:text-body" placeholder="product description here" />
+<ValidationMessage For="@(() => ProductEditModel.Description)" class="text-sm text-red-600 dark:text-red-500 mt-1"/>
+</div>
+<div class="mb-4">
+<label for="price" class="block mb-2.5 text-sm font-medium text-heading">Product price in $</label>
+<InputNumber @bind-Value="ProductEditModel.Price" id="description" class="bg-neutral-secondary-medium border border-default-medium
+text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+placeholder:text-body" placeholder="10.9" />
+<ValidationMessage For="@(() => ProductEditModel.Price)" class="text-sm text-red-600 dark:text-red-500 mt-1" />
+</div>
+<div class="mb-4">
+<label for="price" class="block mb-2.5 text-sm font-medium text-heading">Product units</label>
+<InputNumber @bind-Value="ProductEditModel.Quantity" id="description" class="bg-neutral-secondary-medium border border-default-medium
+text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs
+placeholder:text-body" placeholder="20" />
+<ValidationMessage For="@(() => ProductEditModel.Quantity)" class="text-sm text-red-600 dark:text-red-500 mt-1" />
+</div>
+<button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4
+ focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full mb-3">Commit</button>
+<button @onclick="() => OnCancel.InvokeAsync()" type="button" class="text-gray-950 bg-gray-100 box-border border border-transparent hover:bg-gray-400 focus:ring-4
+ focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full mb-3">cancel</button>
+@code {
+    [Parameter]
+     public  ProductRequestDto ProductEditModel {get; set;} = new ProductRequestDto
+                    {
+                        Name = string.Empty, CategoryID = 1, Description = string.Empty,Price =0, Quantity=0
+                    };    
+    [Parameter]
+    public List<CategoryResponseDto> Categories { get; set; } = new();
+    [Parameter]
+    public EventCallback OnCancel { get; set; } 
+
+}

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="HubClient/HubClient.csproj" />
+  <Project Path="Hubserver/Hubserver.csproj" />
+  <Project Path="SharedModels/SharedModels.csproj" />
+</Solution>

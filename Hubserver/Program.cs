@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using HubServer;
 using HubServer.Services;
 using System.Text.Json;
+using HubServer.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,7 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
 builder.Services.AddControllers()
                 .AddJsonOptions(options => {
                             options.JsonSerializerOptions.UnmappedMemberHandling = 
@@ -20,6 +27,7 @@ builder.Services.AddControllers()
                             JsonNamingPolicy.SnakeCaseLower;
                 });
 builder.Services.AddProblemDetails();
+builder.Services.AddSignalR();
 builder.Services.AddDbContext<InventoryHubDbContext>();
 builder.Services.AddScoped<IProductsHandler,ProductsHandler>();
 builder.Services.AddScoped<ICategoriesHandler,CategoriesHandler>();
@@ -33,10 +41,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 
 }
+
 app.UseExceptionHandler();
-app.UseHttpsRedirection();
+app.UseCors();
+//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapHub<CategoryHub>("/populate-categories");
 app.MapGet("/weather", () =>
 {
     return Results.Ok("bonjour !");

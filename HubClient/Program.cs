@@ -1,5 +1,7 @@
 using HubClient.Components;
+using SharedModels.Models;
 using tailwind_4_blazor_starter.Services;
+using HubClient.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<IFlowbiteService, FlowbiteService>();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5168") });
+builder.Services.AddScoped<PopulateCategoriesService>();
 
 var app = builder.Build();
 
@@ -18,7 +21,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAntiforgery();
 app.MapStaticAssets();

@@ -280,7 +280,6 @@
     --color-body: var(--color-gray-600);
     --color-heading: var(--color-gray-900);
     --color-fg-brand: var(--color-blue-700);
-    --color-fg-danger: var(--color-rose-700);
     --color-fg-disabled: var(--color-gray-400);
     --color-neutral-primary-soft: var(--color-white);
     --color-neutral-primary: var(--color-white);
@@ -794,8 +793,14 @@
   .inset-s-0 {
     inset-inline-start: 0px;
   }
+  .inset-e-2\.5 {
+    inset-inline-end: calc(var(--spacing) * 2.5);
+  }
   .top-0 {
     top: 0px;
+  }
+  .top-3 {
+    top: calc(var(--spacing) * 3);
   }
   .right-0 {
     right: 0px;
@@ -1164,6 +1169,9 @@
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
   }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
+  }
   .apexcharts-canvas .apexcharts-xaxistooltip {
     color: var(--color-body) !important;
     padding-top: 0.5rem !important;
@@ -1283,6 +1291,9 @@
   .h-2\.5 {
     height: calc(var(--spacing) * 2.5);
   }
+  .h-3 {
+    height: calc(var(--spacing) * 3);
+  }
   .h-4 {
     height: calc(var(--spacing) * 4);
   }
@@ -1300,6 +1311,9 @@
   }
   .h-10 {
     height: calc(var(--spacing) * 10);
+  }
+  .h-12 {
+    height: calc(var(--spacing) * 12);
   }
   .h-\[calc\(100\%-1rem\)\] {
     height: calc(100% - 1rem);
@@ -1383,6 +1397,9 @@
   .w-1\/2 {
     width: calc(1 / 2 * 100%);
   }
+  .w-3 {
+    width: calc(var(--spacing) * 3);
+  }
   .w-4 {
     width: calc(var(--spacing) * 4);
   }
@@ -1427,6 +1444,9 @@
   }
   .max-w-7xl {
     max-width: var(--container-7xl);
+  }
+  .max-w-50 {
+    max-width: calc(var(--spacing) * 50);
   }
   .max-w-md {
     max-width: var(--container-md);
@@ -1838,6 +1858,9 @@
   .bg-neutral-tertiary-medium {
     background-color: var(--color-neutral-tertiary-medium);
   }
+  .bg-red-600 {
+    background-color: var(--color-red-600);
+  }
   .bg-transparent {
     background-color: transparent;
   }
@@ -1932,6 +1955,9 @@
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-2\.5 {
+    padding-inline: calc(var(--spacing) * 2.5);
   }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
@@ -2078,6 +2104,10 @@
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
   }
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+  }
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
@@ -2103,6 +2133,9 @@
   .datatable-wrapper .datatable-table thead th.datatable-descending .datatable-sorter {
     color: var(--color-heading);
   }
+  .text-blue-600 {
+    color: var(--color-blue-600);
+  }
   .text-body {
     color: var(--color-body);
   }
@@ -2111,9 +2144,6 @@
   }
   .text-fg-brand {
     color: var(--color-fg-brand);
-  }
-  .text-fg-danger {
-    color: var(--color-fg-danger);
   }
   .text-fg-disabled {
     color: var(--color-fg-disabled);
@@ -2265,8 +2295,14 @@
     .hover\:bg-neutral-tertiary-medium:hover {
       background-color: var(--color-neutral-tertiary-medium);
     }
+    .hover\:bg-red-800:hover {
+      background-color: var(--color-red-800);
+    }
     .hover\:bg-white:hover {
       background-color: var(--color-white);
+    }
+    .hover\:text-blue-700:hover {
+      color: var(--color-blue-700);
     }
     .hover\:text-fg-brand:hover {
       color: var(--color-fg-brand);
@@ -2304,8 +2340,14 @@
   .focus\:ring-brand-medium:focus {
     --tw-ring-color: var(--color-brand-medium);
   }
+  .focus\:ring-gray-100:focus {
+    --tw-ring-color: var(--color-gray-100);
+  }
   .focus\:ring-neutral-tertiary:focus {
     --tw-ring-color: var(--color-neutral-tertiary);
+  }
+  .focus\:ring-red-300:focus {
+    --tw-ring-color: var(--color-red-300);
   }
   .focus\:outline-none:focus {
     --tw-outline-style: none;
@@ -2413,6 +2455,9 @@
     .md\:p-0 {
       padding: 0px;
     }
+    .md\:p-5 {
+      padding: calc(var(--spacing) * 5);
+    }
     .md\:p-6 {
       padding: calc(var(--spacing) * 6);
     }
@@ -2492,6 +2537,12 @@
         background-color: color-mix(in oklab, var(--color-gray-900) 80%, transparent);
       }
     }
+    .dark\:text-blue-500 {
+      color: var(--color-blue-500);
+    }
+    .dark\:text-gray-200 {
+      color: var(--color-gray-200);
+    }
     .dark\:text-gray-300 {
       color: var(--color-gray-300);
     }
@@ -2514,6 +2565,9 @@
       .dark\:hover\:bg-gray-600:hover {
         background-color: var(--color-gray-600);
       }
+      .dark\:hover\:bg-gray-700:hover {
+        background-color: var(--color-gray-700);
+      }
       .dark\:hover\:bg-gray-800:hover {
         background-color: var(--color-gray-800);
       }
@@ -2526,6 +2580,12 @@
     }
     .dark\:focus\:ring-gray-600:focus {
       --tw-ring-color: var(--color-gray-600);
+    }
+    .dark\:focus\:ring-gray-700:focus {
+      --tw-ring-color: var(--color-gray-700);
+    }
+    .dark\:focus\:ring-red-800:focus {
+      --tw-ring-color: var(--color-red-800);
     }
   }
   @media (width >= 48rem) {

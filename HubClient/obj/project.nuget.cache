@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "2017tZoyLDE=",
+  "dgSpecHash": "evuFe71EP6s=",
   "success": true,
   "projectFilePath": "/home/kafando/fullstack/SmartInventoryHub/HubClient/HubClient.csproj",
   "expectedPackageFiles": [
-    "/home/kafando/.nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.12/microsoft.aspnetcore.app.internal.assets.10.0.12.nupkg.sha512"
+    "/home/kafando/.nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.12/microsoft.aspnetcore.app.internal.assets.10.0.12.nupkg.sha512",
+    "/home/kafando/.nuget/packages/microsoft.aspnetcore.http.connections.client/10.0.15/microsoft.aspnetcore.http.connections.client.10.0.15.nupkg.sha512",
+    "/home/kafando/.nuget/packages/microsoft.aspnetcore.signalr.client/10.0.15/microsoft.aspnetcore.signalr.client.10.0.15.nupkg.sha512",
+    "/home/kafando/.nuget/packages/microsoft.aspnetcore.signalr.client.core/10.0.15/microsoft.aspnetcore.signalr.client.core.10.0.15.nupkg.sha512"
   ],
   "logs": []
 }
