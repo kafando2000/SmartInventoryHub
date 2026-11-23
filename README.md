@@ -18,6 +18,7 @@ SmartInventoryHub is a simple full-stack inventory management application for or
 ## Getting Started
 
 1. Clone the repository:
+
     if ssh 
 
    ```bash
@@ -25,11 +26,11 @@ SmartInventoryHub is a simple full-stack inventory management application for or
    cd SmartInventoryHub
    ```
    if http
-     
-       ```bash
-   git clone https://github.com/kafando2000/SmartInventoryHub.git
-   cd SmartInventoryHub
-   ```
+    
+    ```bash
+    git clone https://github.com/kafando2000/SmartInventoryHub.git
+    cd SmartInventoryHub
+    ```
 
 2. Install the frontend and backend dependencies:
 
@@ -45,7 +46,7 @@ SmartInventoryHub is a simple full-stack inventory management application for or
 4. Start the server and client:
 
    ```bash
-  ./launch_server_and_client.sh
+   ./launch_server_and_client.sh
    ```
 
 ## Usage
